@@ -14,6 +14,7 @@ function addBlogForm(value)
 {
     if(value == 0)
     {
+        $("#id").val('');
         $("#blogButton").text('Add Blog');
         $("#blogModal").modal('show');
         clearAll();
@@ -56,7 +57,7 @@ function saveBlog(e)
             },
             complete: function() {
                 $('#blogButton').attr("disabled", false);
-                if ($("#id").val() != "" || $("#id").val() != null) {
+                if ($("#id").val() != "" || $("#id").val() != null || $("#id").val() != undefined) {
                     console.log('sd');
                     $("#blogButton").text('Update Blog');
                 } else {

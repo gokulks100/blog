@@ -38,20 +38,20 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
-        $validate = Validator::make($request->all(), [
-            'name' => 'required',
-            'date' => 'required',
-            'content' => 'required',
-            'author' => 'required',
-            'image' => (!isset($request->id)) ? 'required' : ""
-        ]);
+        // $validate = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'date' => 'required',
+        //     'content' => 'required',
+        //     'author' => 'required',
+        //     'image' => (!isset($request->id)) ? 'required' : ""
+        // ]);
 
-        // $validated = $request->validated();
-        if ($validate->fails()) {
-            return  response()->json(['success' => false, 'message' => $validate->errors()->first()], 422);
-        }
+        $validated = $request->validated();
+        // if ($validated->fails()) {
+        //     return  response()->json(['success' => false, 'message' => $validated->errors()->first()], 422);
+        // }
 
         DB::beginTransaction();
         try {
