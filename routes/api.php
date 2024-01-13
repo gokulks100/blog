@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FrontBlogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/login',[AuthController::class,'login'])->name('login');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  Route::get('blogs',[FrontBlogController::class,'getBlogs'])->name("blogs");
 });

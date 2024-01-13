@@ -23,7 +23,10 @@ Auth::routes();
 
 Route::group(['prefix'=> '/','middleware'=>['auth']], function () {
     Route::get('/home', [BlogController::class, 'index'])->name('home');
-    Route::get('/getData',[BlogController::class,'getData'])->name('blog.getData');
+    Route::get('/getData',[BlogController::class,'show'])->name('blog.getData');
+    Route::post('/', [BlogController::class,'store'])->name('blogs.add');
+    Route::get('/{id}',[BlogController::class,'edit'])->name('blogs.getbyid');
+    Route::delete('/{id}', [BlogController::class, 'destroy'])->name('blogs.delete');
 });
 
 
