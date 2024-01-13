@@ -5,6 +5,10 @@
     .form-group {
         margin-bottom: 20px;
     }
+
+    .d-none {
+        display: none;
+    }
 </style>
 
 @endpush

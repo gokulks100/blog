@@ -14,8 +14,13 @@ function addBlogForm(value)
 {
     if(value == 0)
     {
+        $("#blogButton").text('Add Blog');
         $("#blogModal").modal('show');
         clearAll();
+    }
+    else if(value==2)
+    {
+        $("#blogModal").modal('show');
     }
     else
     {
@@ -28,6 +33,8 @@ function clearAll()
 {
     $("#blogForm")[0].reset();
     $('#blogForm').trigger("reset");
+    $("#showImg").addClass('d-none');
+    $("#content").summernote('code', '');
 }
 
 function saveBlog(e)
@@ -90,6 +97,7 @@ function editBlog(id) {
             },
             success: function(output) {
                 console.log(output);
+                $("#showImg").removeClass('d-none');
                 $(".modal-title").text("Update Blog");
                 $("#blogButton").text("Update Blog");
                 $('#id').val(output.id);
@@ -98,7 +106,7 @@ function editBlog(id) {
                 $("#author").val(output.author);
                 $("#imageShow").attr('src', `images1/${output.image}`);
                 $("#content").summernote('code', output.content);
-                addBlogForm(0);
+                addBlogForm(2);
             },
             error: function(data) {
 
