@@ -7,3 +7,5 @@
 ```php artisan migrate --seed```
 
 database_name = blog
+
+.env.example to .env
